@@ -1,0 +1,15 @@
+<p>tasks works!</p>
+
+<div *ngIf="tasks.length; else noTasks">
+  <ul>
+    <div>
+      <li *ngFor="let task of tasks">
+        {{ task.title }} - {{ task.description }} - Completed:
+      </li>
+    </div>
+  </ul>
+</div>
+
+<ng-template #noTasks>
+  <p>No tasks found.</p>
+</ng-template>

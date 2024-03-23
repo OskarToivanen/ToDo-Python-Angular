@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 def create_app():
     app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\sqlite3\\db\\todo.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -41,7 +43,7 @@ def create_app():
         return jsonify({'task': {'id': task.id, 'title': task.title, 'description': task.description, 'completed': task.completed}}), 200
     
     # Update task by ID
-    @app.route('/tasks/<id>', methods=['PUT'])
+    @app.route('/tasks/<int:id>', methods=['PUT'])
     def update_task(id):
         task = Task.query.get_or_404(id)
         data = request.get_json()

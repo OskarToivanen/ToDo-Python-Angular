@@ -1,0 +1,14 @@
+/* frontpage.component.css */
+.frontpage-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.frontpage-container h1 {
+  margin-bottom: 20px;
+}
+
+.frontpage-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
